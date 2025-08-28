@@ -4,6 +4,12 @@
   $kueri_excel = mysqli_query($koneksi, "SELECT excel_tables.*, users.name AS uploader FROM excel_tables JOIN users ON excel_tables.user_id = users.id;");
   $row_excel = mysqli_fetch_all($kueri_excel, MYSQLI_ASSOC);
 
+  if(isset($_GET['id-hapus'])){
+    $id = $_GET['id-hapus'];
+    $hapus = mysqli_query($koneksi, "DELETE FROM excel_tables WHERE id = '$id';");
+    header("Location: daftar_berkas_excel.php?hapus=sukses");
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="id-ID">
@@ -44,7 +50,7 @@
                       class="btn btn-danger btn-sm view-btn" 
                       title="Hapus berkas">
                       <i class="bi bi-trash"></i>
-                </a>
+                    </a>
                   </td>
               </tr>
               <?php  } ?>
