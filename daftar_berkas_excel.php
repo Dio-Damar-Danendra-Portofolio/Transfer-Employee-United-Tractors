@@ -6,7 +6,11 @@
 
   if(isset($_GET['id-hapus'])){
     $id = $_GET['id-hapus'];
-    $hapus = mysqli_query($koneksi, "DELETE FROM excel_tables WHERE id = '$id';");
+    // Hapus semua data di excel_data yang terkait
+    mysqli_query($koneksi, "DELETE FROM excel_data WHERE file_id = $id");
+
+    // Baru hapus data utama di excel_tables
+    mysqli_query($koneksi, "DELETE FROM excel_tables WHERE id = $id");
     header("Location: daftar_berkas_excel.php?hapus=sukses");
   }
 
