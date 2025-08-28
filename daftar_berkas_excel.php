@@ -11,7 +11,7 @@
 
     // Baru hapus data utama di excel_tables
     mysqli_query($koneksi, "DELETE FROM excel_tables WHERE id = $id");
-    header("Location: daftar_berkas_excel.php?hapus=sukses");
+    header("Location: daftar_berkas_excel.php?hapus=berhasil");
   }
 
 ?>
