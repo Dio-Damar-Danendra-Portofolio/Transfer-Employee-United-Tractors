@@ -50,9 +50,9 @@
                       <i class="bi bi-eye"></i>
                     </button>
                     <a 
-                      href="daftar_berkas_excel.php/?id-hapus=<?= $e['id']; ?>"
+                      href="daftar_berkas_excel.php?id-hapus=<?= $e['id']; ?>"
                       class="btn btn-danger btn-sm view-btn" 
-                      title="Hapus berkas">
+                      title="Hapus berkas" onclick="return confirm('Apakah Anda yakin untuk menghapus data ini?');">
                       <i class="bi bi-trash"></i>
                     </a>
                   </td>
@@ -83,25 +83,50 @@
   </div>
 </div>
 <script>
-  // Buat tabel dari JSON
-let table = "<div class='table-responsive'>";
-table += "<table class='table table-bordered table-striped table-hover align-middle'>";
-table += "<thead class='table-dark'><tr>";
-Object.keys(data[0]).forEach(key => {
-  table += `<th>${key}</th>`;
-});
-table += "</tr></thead><tbody>";
+document.querySelectorAll(".view-btn").forEach(btn => {
+  btn.addEventListener("click", function() {
+    let fileId = this.dataset.id;
 
-data.forEach(row => {
-  table += "<tr>";
-  Object.values(row).forEach(val => {
-    table += `<td>${val}</td>`;
+    // Tampilkan loading
+    document.getElementById("table-container").innerHTML = "<p class='text-center'>Memuat data...</p>";
+
+    // Ambil data JSON dari PHP
+    fetch("backend/get_excel_json.php?id=" + fileId)
+      .then(response => response.json())
+      .then(data => {
+        if (!Array.isArray(data) || data.length === 0) {
+          document.getElementById("table-container").innerHTML = "<p class='text-center text-danger'>Tidak ada data!</p>";
+          return;
+        }
+
+        // Buat tabel dari JSON
+        let table = "<div class='table-responsive'>";
+        table += "<table class='table table-bordered table-striped table-hover align-middle'>";
+        table += "<thead class='table-dark'><tr>";
+        Object.keys(data[0]).forEach(key => {
+          table += `<th>${key}</th>`;
+        });
+        table += "</tr></thead><tbody>";
+
+        data.forEach(row => {
+          table += "<tr>";
+          Object.values(row).forEach(val => {
+            table += `<td>${val}</td>`;
+          });
+          table += "</tr>";
+        });
+
+        table += "</tbody></table>";
+        table += "</div>"; // tutup table-responsive
+
+        document.getElementById("table-container").innerHTML = table;
+      })
+      .catch(err => {
+        document.getElementById("table-container").innerHTML = "<p class='text-center text-danger'>Gagal memuat data!</p>";
+        console.error(err);
+      });
   });
-  table += "</tr>";
 });
-
-table += "</tbody></table>";
-table += "</div>"; // tutup table-responsive
 </script>
 </body>
 </html>
