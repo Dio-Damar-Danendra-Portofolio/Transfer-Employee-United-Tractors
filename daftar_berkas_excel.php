@@ -143,7 +143,7 @@ if (isset($_GET['id-hapus'])) {
       });
     });
 
-    // Handle PDF Download Button
+    // Handle PDF Download Button (full file)
     document.querySelectorAll(".pdf-btn").forEach(btn => {
       btn.addEventListener("click", function() {
         let fileId = this.dataset.id;
@@ -211,25 +211,27 @@ if (isset($_GET['id-hapus'])) {
       });
     });
 
+    // Handle PDF Row Button (in modal, per row)
     document.addEventListener("click", function(e) {
-      if (e.target.closest(".pdf-row-btn")) {
-        let rowIndex = e.target.closest(".pdf-row-btn").dataset.index;
-        let row = data[rowIndex]; // ambil row tertentu
+      const button = e.target.closest(".pdf-row-btn");
+      if (button) {
+        const row = JSON.parse(button.dataset.row);
 
-        const { jsPDF } = window.jspdf;
+        const {
+          jsPDF
+        } = window.jspdf;
         const doc = new jsPDF();
 
         doc.setFontSize(12);
         doc.text("Karyawan berikut:", 20, 30);
-        doc.text("Nama   : " + row.column1, 20, 40);
-        doc.text("Divisi Asal  : " + row.column2, 20, 50);
+        doc.text("Nama          : " + (row.column1 || ''), 20, 40);
+        doc.text("Divisi Asal   : " + (row.column2 || ''), 20, 50);
         doc.text("Akan dirotasi ke:", 20, 65);
-        doc.text("Divisi Tujuan  : " + row.column3, 20, 75);
+        doc.text("Divisi Tujuan : " + (row.column3 || ''), 20, 75);
 
-        doc.save(`row_${rowIndex}.pdf`);
+        doc.save(`karyawan_${row.column1 || 'unknown'}.pdf`);
       }
     });
-
   </script>
 </body>
 
