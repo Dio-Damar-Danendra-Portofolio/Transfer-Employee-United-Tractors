@@ -111,12 +111,13 @@ if (isset($_GET['id-hapus'])) {
             }
 
             let table = "<div class='table-responsive'>";
-            table += "<table class='table table-bordered table-striped table-hover align-middle'>";
+            table += "<table class='table table-bordered text-center table-striped table-hover align-middle'>";
             table += "<thead class='table-dark'><tr>";
             // Use first row's values as headers
             Object.values(data[0]).forEach(value => {
               table += `<th>${value}</th>`;
             });
+            table += `<th>Tindakan</th>`;
             table += "</tr></thead><tbody>";
 
             // Start from second row to skip header row
@@ -125,6 +126,9 @@ if (isset($_GET['id-hapus'])) {
               Object.values(row).forEach(val => {
                 table += `<td>${val}</td>`;
               });
+              table += `<td>
+                    <button class="btn btn-success btn-sm pdf-row-btn" data-row='${JSON.stringify(row)}'><i class="bi bi-file-pdf"></i></button>
+                    </td>`;
               table += "</tr>";
             });
 
@@ -172,7 +176,7 @@ if (isset($_GET['id-hapus'])) {
               }
 
               doc.setFontSize(16);
-              doc.text("Data Berkas Excel", 14, 20);
+              doc.text("Data Karyawan Transfer", 14, 20);
 
               // Use first row's values as headers
               const headers = Object.values(data[0]);
@@ -206,6 +210,26 @@ if (isset($_GET['id-hapus'])) {
           });
       });
     });
+
+    document.addEventListener("click", function(e) {
+      if (e.target.closest(".pdf-row-btn")) {
+        let rowIndex = e.target.closest(".pdf-row-btn").dataset.index;
+        let row = data[rowIndex]; // ambil row tertentu
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        doc.setFontSize(12);
+        doc.text("Karyawan berikut:", 20, 30);
+        doc.text("Nama   : " + row.column1, 20, 40);
+        doc.text("Divisi Asal  : " + row.column2, 20, 50);
+        doc.text("Akan dirotasi ke:", 20, 65);
+        doc.text("Divisi Tujuan  : " + row.column3, 20, 75);
+
+        doc.save(`row_${rowIndex}.pdf`);
+      }
+    });
+
   </script>
 </body>
 
