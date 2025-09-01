@@ -9,65 +9,65 @@
   <?php include "include/header.php"; ?>
 
   <!-- Hero Section -->
-  <main class="vh-100 justify-content-center align-items-center p-5" style="background-color: #ffbb00ff;">
+  <main class="d-flex justify-content-center align-items-center min-vh-100 py-5" style="background-color: #ffbb00ff;">
     <div class="container">
-      <div class="card">
-          <div class="card-header">
-              <h1 class="text-dark"><i>Sign-up</i> (Daftar)</h1>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+          <div class="card shadow-lg rounded-4">
+            <div class="card-header bg-light">
+              <h1 class="text-dark text-center m-0"><i>Sign-up</i> (Daftar)</h1>
+            </div>
+            <div class="card-body p-4">
+              <form action="" method="post">
+                <div class="row g-3">
+                  <div class="col-12 col-md-6">
+                    <label for="name" class="form-label text-dark fw-bold">Nama Lengkap:</label>
+                    <input type="text" class="form-control" name="name" id="name" required>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="email" class="form-label text-dark fw-bold">E-mail:</label>
+                    <input type="email" class="form-control" name="email" id="email" required>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="password" class="form-label text-dark fw-bold">Password:</label>
+                    <input type="password" class="form-control" name="password" id="password" required>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="division" class="form-label text-dark fw-bold">Divisi:</label>
+                    <select name="division" id="division" class="form-select" required>
+                      <option value="">Pilih Divisi</option>
+                      <?php include "backend/divisi.php"; ?>
+                      <?php foreach ($divisi as $div) { ?>
+                        <option value="<?= $div ?>"><?= $div ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="phone_number" class="form-label text-dark fw-bold">Nomor Ponsel:</label>
+                    <input type="tel" class="form-control" name="phone_number" id="phone_number" required>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="role" class="form-label text-dark fw-bold">Peran:</label>
+                    <input type="text" class="form-control" name="role" id="role" required>
+                  </div>
+                </div>
+
+                <div class="row mt-4">
+                  <div class="col-6 d-grid">
+                    <button type="reset" class="btn btn-danger fw-bold">Reset</button>
+                  </div>
+                  <div class="col-6 d-grid">
+                    <button type="submit" class="btn btn-success fw-bold" name="daftar">Daftar</button>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
-          <div class="card-body">
-                <form action="" method="post">
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label for="name" class="form-label text-dark fw-bold fs-5">Nama Lengkap: </label>
-                  <input type="text" class="form-control" name="name" id="name" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="email" class="form-label text-dark fw-bold fs-5">E-mail: </label>
-                  <input type="email" class="form-control" name="email" id="email" required>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label for="password" class="form-label text-dark fw-bold fs-5">Password: </label>
-                  <input type="password" class="form-control" name="password" id="password" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="division" class="form-label text-dark fw-bold fs-5">Divisi: </label>
-                  <select name="division" id="division" class="form-select" required>
-                  <?php include "backend/divisi.php"; ?>
-                    <option value="">Pilih Divisi</option>
-                    <?php foreach ($divisi as $div) { ?>
-                    <option value="<?= $div ?>"><?= $div ?></option>
-                    <?php } ?>
-                  </select>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label for="phone_number" class="form-label text-dark fw-bold fs-5">
-                  Nomor Ponsel: 
-                  </label>
-                  <input class="form-control" type="tel" name="phone_number" id="phone_number" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="role" class="form-label text-dark fw-bold fs-5">Peran: </label>
-                  <input type="text" name="role" id="role" class="form-control" required>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <button type="reset" class="btn btn-danger fw-bold px-4">Reset</button>
-                </div>
-                <div class="col-md-6">
-                  <button type="submit" class="btn btn-success fw-bold px-4" name="daftar">Daftar</button>
-                </div>
-              </div>
-            </form>
-          </div>
+        </div>
       </div>
     </div>
   </main>
+
   <!-- Footer -->
   <?php include "include/footer.php"; ?>
 </body>

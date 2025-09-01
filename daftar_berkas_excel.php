@@ -20,54 +20,62 @@ if (isset($_GET['id-hapus'])) {
   <?php include "include/header.php"; ?>
 
   <!-- Hero Section -->
-  <main class="d-flex justify-content-start align-items-start py-4" style="background-color: #ffbb00ff;">
-    <div class="container-fluid me-4">
-      <h1 class="text-dark">Daftar Berkas Excel</h1>
-      <div class="row me-3">
-        <div class="col-12 text-dark">
-          <table class="table table-striped text-center">
-            <tr>
-              <th>No.</th>
-              <th>Nama <i>file</i> (Berkas)</th>
-              <th>Nama Pengunggah</th>
-              <th>Tindakan</th>
-            </tr>
-            <?php $i = 0;
-            foreach ($row_excel as $e) { ?>
+  <main class="py-4" style="background-color: #ffbb00ff;">
+  <div class="container">
+    <h1 class="text-dark mb-4 text-center text-md-start">Daftar Berkas Excel</h1>
+    <div class="row">
+      <div class="col-12 text-dark">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover align-middle text-center">
+            <thead class="table-dark">
               <tr>
-                <td><?= ++$i; ?></td>
-                <td><?= $e['name']; ?></td>
-                <td><?= $e['uploader']; ?></td>
-                <td>
-                  <button
-                    class="btn btn-primary btn-sm view-btn"
-                    data-id="<?= $e['id']; ?>"
-                    data-bs-toggle="modal"
-                    data-bs-target="#dataModal"
-                    title="Lihat isi berkas">
-                    <i class="bi bi-eye"></i>
-                  </button>
-                  <button
-                    class="btn btn-success btn-sm pdf-btn"
-                    data-id="<?= $e['id']; ?>"
-                    title="Unduh PDF">
-                    <i class="bi bi-file-pdf"></i>
-                  </button>
-                  <a
-                    href="daftar_berkas_excel.php?id-hapus=<?= $e['id']; ?>"
-                    class="btn btn-danger btn-sm"
-                    title="Hapus berkas"
-                    onclick="return confirm('Apakah Anda yakin untuk menghapus data ini?');">
-                    <i class="bi bi-trash"></i>
-                  </a>
-                </td>
+                <th>No.</th>
+                <th>Nama <i>File</i></th>
+                <th>Pengunggah</th>
+                <th>Tindakan</th>
               </tr>
-            <?php } ?>
+            </thead>
+            <tbody>
+              <?php $i = 0;
+              foreach ($row_excel as $e) { ?>
+                <tr>
+                  <td><?= ++$i; ?></td>
+                  <td class="text-break"><?= $e['name']; ?></td>
+                  <td><?= $e['uploader']; ?></td>
+                  <td>
+                    <div class="btn-group d-flex flex-wrap justify-content-center gap-1">
+                      <button
+                        class="btn btn-primary btn-sm view-btn"
+                        data-id="<?= $e['id']; ?>"
+                        data-bs-toggle="modal"
+                        data-bs-target="#dataModal"
+                        title="Lihat isi berkas">
+                        <i class="bi bi-eye"></i>
+                      </button>
+                      <button
+                        class="btn btn-success btn-sm pdf-btn"
+                        data-id="<?= $e['id']; ?>"
+                        title="Unduh PDF">
+                        <i class="bi bi-file-pdf"></i>
+                      </button>
+                      <a
+                        href="daftar_berkas_excel.php?id-hapus=<?= $e['id']; ?>"
+                        class="btn btn-danger btn-sm"
+                        title="Hapus berkas"
+                        onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                        <i class="bi bi-trash"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              <?php } ?>
+            </tbody>
           </table>
         </div>
       </div>
     </div>
-  </main>
+  </div>
+</main>
 
   <!-- Footer -->
   <?php include "include/footer.php"; ?>
