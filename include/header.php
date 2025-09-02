@@ -1,7 +1,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
       <div class="container-fluid">
-        <a class="navbar-brand fw-bold text-truncate" style="max-width: 220px;" 
+        <a class="navbar-brand fw-bold text-truncate" style="max-width: 300px;" 
            href="<?php echo isset($_SESSION['NAME']) ? 'beranda' : 'index'?>.php">
            United Tractors Transfer Employee
         </a>
