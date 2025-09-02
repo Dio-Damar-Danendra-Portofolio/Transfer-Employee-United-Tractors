@@ -40,6 +40,10 @@
             $judul = "Daftar Berkas Excel - United Tractors Transfer Employee";
         break;
 
+        case 'ganti_password.php':
+            $judul = "Ganti Password (Kata Sandi) - United Tractors Transfer Employee";
+        break;
+
         default:
             $judul = ucfirst($laman);
             break;

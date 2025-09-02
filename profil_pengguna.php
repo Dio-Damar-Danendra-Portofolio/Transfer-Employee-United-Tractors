@@ -46,8 +46,11 @@
 
     <!-- Tombol Edit -->
     <div class="row mb-3">
-      <div class="col-12 d-flex justify-content-center">
+      <div class="col-6 d-flex justify-content-center">
         <a href="edit_profil.php" class="btn btn-primary px-4">Edit Profil</a>
+      </div>
+      <div class="col-6 d-flex justify-content-center">
+        <a href="ganti_password.php" class="btn btn-dark px-4">Ganti <i>Password</i></a>
       </div>
     </div>
   </div>
