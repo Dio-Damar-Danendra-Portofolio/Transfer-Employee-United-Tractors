@@ -29,7 +29,7 @@
         break;
 
         case 'login.php':
-            $judul = "Log in - United Tractors Transfer Employee";
+            $judul = "Log In - United Tractors Transfer Employee";
         break;
 
         case 'sign_up.php':
