@@ -9,12 +9,12 @@
   <?php include "include/header.php"; ?>
 
   <!-- Hero Section -->
-  <main class="d-flex justify-content-center align-items-center min-vh-100 p-3" style="background-color: #000080;">
+  <main class="d-flex justify-content-center align-items-center min-vh-100 p-3 bg-warning">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-5">
           <div class="card shadow-lg rounded-4">
-            <div class="card-header bg-warning text-center">
+            <div class="card-header text-center">
               <h1 class="text-dark m-0"><i>Login</i> (Masuk)</h1>
             </div>
             <div class="card-body p-4">
