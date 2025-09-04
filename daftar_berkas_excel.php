@@ -49,13 +49,13 @@ if (isset($_GET['id-hapus'])) {
                         data-id="<?= $e['id']; ?>"
                         data-bs-toggle="modal"
                         data-bs-target="#dataModal"
-                        title="Lihat isi berkas">
+                        title="Lihat isi berkas PDF dalam bentuk tabel">
                         <i class="bi bi-eye"></i>
                       </button>
                       <button
                         class="btn btn-success btn-sm pdf-btn"
                         data-id="<?= $e['id']; ?>"
-                        title="Unduh PDF">
+                        title="Unduh berkas tabel PDF">
                         <i class="bi bi-file-pdf"></i>
                       </button>
                       <a
@@ -135,7 +135,7 @@ if (isset($_GET['id-hapus'])) {
                 table += `<td>${val}</td>`;
               });
               table += `<td>
-                    <button class="btn btn-success btn-sm pdf-row-btn" data-row='${JSON.stringify(row)}'><i class="bi bi-file-pdf"></i></button>
+                    <button class="btn btn-success btn-sm pdf-row-btn" data-row='${JSON.stringify(row)}' title="Unduh data Perpindahan Divisi"><i class="bi bi-file-pdf"></i></button>
                     </td>`;
               table += "</tr>";
             });
