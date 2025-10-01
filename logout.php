@@ -3,8 +3,8 @@
     session_destroy();
 
     // Hapus cookie
-    setcookie('email', '', time() - 3600, "/");
-    setcookie('password', '', time() - 3600, "/");
+    setcookie('email', '', time() - (3600 * 24 * 366), "/");
+    setcookie('password', '', time() - (3600 * 24 * 366), "/");
 
     header("Location: login.php");
     exit;
