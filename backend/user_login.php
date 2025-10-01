@@ -13,7 +13,7 @@ if (isset($_POST['login'])) {
     if ($user && password_verify($password, $user['password'])) {
         // Logika untuk Mengatur Cookie
         if ($remember) {
-            $cookie_expiration = time() + (86400 * 30); // Cookie berlaku 30 hari (86400 detik = 1 hari)
+            $cookie_expiration = time() + (86400 * 366); 
             // Simpan email dan password (penting: password di sini HANYA untuk "remember me"
             // dan akan diisi ke form, BUKAN untuk otentikasi otomatis yang lebih kompleks).
             setcookie('email_remember', $email, $cookie_expiration, "/");
