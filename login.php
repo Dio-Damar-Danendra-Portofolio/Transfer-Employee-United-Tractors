@@ -5,11 +5,9 @@
 <html lang="id-ID">
 <?php include "include/head.php"; ?>
 <body>
-  <!-- Navbar -->
-  <?php include "include/header.php"; ?>
+    <?php include "include/header.php"; ?>
 
-  <!-- Hero Section -->
-  <main class="d-flex justify-content-center align-items-center min-vh-100 p-3 bg-warning">
+    <main class="d-flex justify-content-center align-items-center min-vh-100 p-3 bg-warning">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-5">
@@ -21,14 +19,17 @@
               <form action="" method="post" novalidate>
                 <div class="mb-3">
                   <label for="email" class="form-label fw-bold">E-mail:</label>
-                  <input type="email" name="email" id="email" class="form-control" required>
+                                      <input type="email" name="email" id="email" class="form-control" 
+                       value="<?php echo isset($_COOKIE['email_remember']) ? htmlspecialchars($_COOKIE['email_remember']) : ''; ?>" required>
                 </div>
                 <div class="mb-3">
                   <label for="password" class="form-label fw-bold">Password:</label>
-                  <input type="password" name="password" id="password" class="form-control" required>
+                                      <input type="password" name="password" id="password" class="form-control" 
+                       value="<?php echo isset($_COOKIE['password_remember']) ? htmlspecialchars($_COOKIE['password_remember']) : ''; ?>" required>
                 </div>
                 <div class="mb-3 d-flex align-items-center">
-                  <input class="form-check-input me-2" type="checkbox" name="remember" id="remember">
+                                      <input class="form-check-input me-2" type="checkbox" name="remember" id="remember" 
+                       <?php echo isset($_COOKIE['email_remember']) ? 'checked' : ''; ?>>
                   <label class="form-check-label" for="remember">Ingat saya</label>
                 </div>
                 <div class="d-grid">
@@ -42,7 +43,6 @@
     </div>
   </main>
 
-  <!-- Footer -->
-  <?php include "include/footer.php"; ?>
+    <?php include "include/footer.php"; ?>
 </body>
 </html>
